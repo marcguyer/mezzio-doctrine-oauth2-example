@@ -1,8 +1,8 @@
 {
-    "name": "zendframework/zend-expressive-skeleton",
-    "description": "Zend expressive skeleton. Begin developing PSR-15 middleware applications in seconds!",
+    "name": "marcguyer/mezzio-doctrine-oauth2-example",
+    "description": "Source code for https://marc.guyer.me/posts/example-application-with-mezzio-doctrine-oauth2",
     "type": "project",
-    "homepage": "https://github.com/zendframework/zend-expressive-skeleton",
+    "homepage": "https://marc.guyer.me/posts/example-application-with-mezzio-doctrine-oauth2",
     "license": "BSD-3-Clause",
     "keywords": [
         "skeleton",
@@ -13,7 +13,11 @@
         "psr-15",
         "zf",
         "zendframework",
-        "zend-expressive"
+        "zend-expressive",
+        "mezzio",
+        "doctrine",
+        "phpunit",
+        "oauth2"
     ],
     "config": {
         "sort-packages": true
@@ -30,11 +34,8 @@
         }
     },
     "support": {
-        "issues": "https://github.com/zendframework/zend-expressive-skeleton/issues",
-        "source": "https://github.com/zendframework/zend-expressive-skeleton",
-        "rss": "https://github.com/zendframework/zend-expressive-skeleton/releases.atom",
-        "slack": "https://zendframework-slack.herokuapp.com",
-        "forum": "https://discourse.zendframework.com/c/questions/expressive"
+        "issues": "https://github.com/marcguyer/mezzio-doctrine-oauth2-example/issues",
+        "source": "https://github.com/marcguyer/mezzio-doctrine-oauth2-example"
     },
     "require": {
         "php": "^7.1",
@@ -48,12 +49,12 @@
         "zendframework/zend-expressive-fastroute": "^3.0"
     },
     "require-dev": {
+        "filp/whoops": "^2.1.12",
         "phpunit/phpunit": "^7.0.1",
         "roave/security-advisories": "dev-master",
         "squizlabs/php_codesniffer": "^2.9.1",
         "zendframework/zend-expressive-tooling": "^1.0",
-        "zfcampus/zf-development-mode": "^3.1",
-        "filp/whoops": "^2.1.12"
+        "zfcampus/zf-development-mode": "^3.1"
     },
     "autoload": {
         "psr-4": {
@@ -62,7 +63,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "AppTest\\": "test/AppTest/"
+            "AppTest\\": "test/AppTest/",
+            "FunctionalTest\\": "test/FunctionalTest/"
         }
     },
     "scripts": {

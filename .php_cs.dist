@@ -1,0 +1,42 @@
+<?php
+
+declare(strict_types=1);
+
+return PhpCsFixer\Config::create()
+    ->setRiskyAllowed(true)
+    ->setRules(
+        [
+            '@PSR1' => true,
+            '@PSR2' => true,
+            '@Symfony' => true,
+            // '@DoctrineAnnotation' => true,
+            'align_multiline_comment' => true,
+            'array_syntax' => ['syntax' => 'short'],
+            'heredoc_to_nowdoc' => true,
+            'linebreak_after_opening_tag' => true,
+            'modernize_types_casting' => true,
+            'no_multiline_whitespace_before_semicolons' => true,
+            'no_unreachable_default_argument_value' => true,
+            'no_useless_else' => true,
+            'no_useless_return' => true,
+            'phpdoc_add_missing_param_annotation' => ['only_untyped' => false],
+            'phpdoc_order' => true,
+            'general_phpdoc_annotation_remove' => ['annotations' => ['author', 'package']],
+            'list_syntax' => ['syntax' => 'short'],
+            'phpdoc_types_order' => ['null_adjustment' => 'always_last'],
+            'concat_space' => ['spacing' => 'one'],
+            // should be enabled for new projects
+            'declare_strict_types' => true,
+            'psr4' => true,
+            'no_php4_constructor' => true,
+        ]
+    )
+    // ->setCacheFile(__DIR__.'/.php_cs.cache')
+    ->setFinder(
+        PhpCsFixer\Finder::create()
+            ->in(__DIR__ . '/bin')
+            ->in(__DIR__ . '/config')
+            ->in(__DIR__ . '/public')
+            ->in(__DIR__ . '/src')
+            ->in(__DIR__ . '/test')
+    );
