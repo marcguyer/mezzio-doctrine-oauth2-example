@@ -51,6 +51,7 @@
     },
     "require-dev": {
         "filp/whoops": "^2.1.12",
+        "helmich/phpunit-psr7-assert": "^3.0.0",
         "phpunit/phpunit": "^7.0.1",
         "roave/security-advisories": "dev-master",
         "squizlabs/php_codesniffer": "^2.9.1",
