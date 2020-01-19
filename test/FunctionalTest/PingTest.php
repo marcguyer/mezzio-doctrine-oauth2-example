@@ -7,13 +7,10 @@ namespace FunctionalTest;
 use PHPUnit\Framework\Assert;
 
 /**
- * Tests only PING
+ * Tests only PING.
  */
 class PingTest extends AbstractEndpointTest
 {
-    /**
-     * @return array
-     */
     public function endpointProvider(): array
     {
         return [
@@ -23,9 +20,9 @@ class PingTest extends AbstractEndpointTest
                 [
                     self::isSuccess(),
                     self::bodyMatchesJson([
-                        'ack' => Assert::greaterThanOrEqual(time())
-                    ])
-                ]
+                        'ack' => Assert::greaterThanOrEqual(time()),
+                    ]),
+                ],
             ],
         ];
     }
