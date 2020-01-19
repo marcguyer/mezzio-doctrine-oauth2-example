@@ -30,16 +30,10 @@ abstract class AbstractEndpointTest extends AbstractFunctionalTest
         array $body = [],
         array $queryParams = []
     ): ServerRequestInterface {
-        $uri = new Uri($uri);
-
-        if (null !== $body) {
+        if ($body) {
             $bodyStream = fopen('php://memory', 'r+');
             fwrite($bodyStream, json_encode($body));
             $body = new Stream($bodyStream);
-        }
-
-        if (!empty($queryParams)) {
-            $uri = $uri->withQuery(http_build_query($queryParams));
         }
 
         return new ServerRequest(
@@ -48,7 +42,9 @@ abstract class AbstractEndpointTest extends AbstractFunctionalTest
             $uri,
             $method,
             $body ?? 'php://input',
-            $requestHeaders ?? []
+            $requestHeaders ?? [],
+            [],
+            $queryParams
         );
     }
 

@@ -10,9 +10,6 @@ use Mezzio\MiddlewareFactory;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 
-/**
- * {@inheritdoc}
- */
 abstract class AbstractFunctionalTest extends TestCase
 {
     use Psr7Assertions;
