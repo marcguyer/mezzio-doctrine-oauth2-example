@@ -4,14 +4,12 @@ declare(strict_types=1);
 
 namespace FunctionalTest;
 
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use Laminas\Diactoros\Stream;
-use Laminas\Diactoros\Request;
-use Laminas\Diactoros\Response;
 use Laminas\Diactoros\ServerRequest;
+use Laminas\Diactoros\Stream;
 use Laminas\Diactoros\Uri;
 use PHPUnit\Framework\Constraint;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Abstract to set up functional testing via endpoint provider config.
@@ -22,20 +20,9 @@ abstract class AbstractEndpointTest extends AbstractFunctionalTest
      * Provider for testEndpoint() method.
      *
      * @see self::testEndpoint() for provider signature
-     *
-     * @return array
      */
     abstract public function endpointProvider(): array;
 
-    /**
-     * @param string $method
-     * @param string $uri
-     * @param array  $requestHeaders
-     * @param array  $body
-     * @param array  $queryParams
-     *
-     * @return ServerRequestInterface
-     */
     protected function getRequest(
         string $method,
         string $uri,
@@ -68,7 +55,6 @@ abstract class AbstractEndpointTest extends AbstractFunctionalTest
     /**
      * @dataProvider endpointProvider
      *
-     * @param ServerRequestInterface $request
      * @param Constraint[] $responseConstraints
      */
     public function testEndpoint(
@@ -81,8 +67,7 @@ abstract class AbstractEndpointTest extends AbstractFunctionalTest
     }
 
     /**
-     * @param Constraint[]      $responseConstraints
-     * @param ResponseInterface $response
+     * @param Constraint[] $responseConstraints
      */
     protected function assertResponseConstraints(
         array $responseConstraints,

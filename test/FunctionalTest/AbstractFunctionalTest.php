@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace FunctionalTest;
 
-use PHPUnit\Framework\TestCase;
-use Psr\Container\ContainerInterface;
+use Helmich\Psr7Assert\Psr7Assertions;
 use Mezzio\Application;
 use Mezzio\MiddlewareFactory;
-use Helmich\Psr7Assert\Psr7Assertions;
+use PHPUnit\Framework\TestCase;
+use Psr\Container\ContainerInterface;
 
 /**
  * {@inheritdoc}
