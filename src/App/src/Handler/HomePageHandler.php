@@ -7,13 +7,13 @@ namespace App\Handler;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Zend\Diactoros\Response\HtmlResponse;
-use Zend\Diactoros\Response\JsonResponse;
-use Zend\Expressive\Plates\PlatesRenderer;
-use Zend\Expressive\Router;
-use Zend\Expressive\Template\TemplateRendererInterface;
-use Zend\Expressive\Twig\TwigRenderer;
-use Zend\Expressive\ZendView\ZendViewRenderer;
+use Laminas\Diactoros\Response\HtmlResponse;
+use Laminas\Diactoros\Response\JsonResponse;
+use Mezzio\Plates\PlatesRenderer;
+use Mezzio\Router;
+use Mezzio\Template\TemplateRendererInterface;
+use Mezzio\Twig\TwigRenderer;
+use Mezzio\LaminasView\LaminasViewRenderer;
 
 class HomePageHandler implements RequestHandlerInterface
 {
@@ -56,7 +56,7 @@ class HomePageHandler implements RequestHandlerInterface
                 $data['containerName'] = 'Pimple';
                 $data['containerDocs'] = 'https://pimple.symfony.com/';
                 break;
-            case 'Zend\ServiceManager\ServiceManager':
+            case 'Laminas\ServiceManager\ServiceManager':
                 $data['containerName'] = 'Zend Servicemanager';
                 $data['containerDocs'] = 'https://docs.zendframework.com/zend-servicemanager/';
                 break;
@@ -81,7 +81,7 @@ class HomePageHandler implements RequestHandlerInterface
         } elseif ($this->router instanceof Router\FastRouteRouter) {
             $data['routerName'] = 'FastRoute';
             $data['routerDocs'] = 'https://github.com/nikic/FastRoute';
-        } elseif ($this->router instanceof Router\ZendRouter) {
+        } elseif ($this->router instanceof Router\LaminasRouter) {
             $data['routerName'] = 'Zend Router';
             $data['routerDocs'] = 'https://docs.zendframework.com/zend-router/';
         }
@@ -92,7 +92,7 @@ class HomePageHandler implements RequestHandlerInterface
         } elseif ($this->template instanceof TwigRenderer) {
             $data['templateName'] = 'Twig';
             $data['templateDocs'] = 'http://twig.sensiolabs.org/documentation';
-        } elseif ($this->template instanceof ZendViewRenderer) {
+        } elseif ($this->template instanceof LaminasViewRenderer) {
             $data['templateName'] = 'Zend View';
             $data['templateDocs'] = 'https://docs.zendframework.com/zend-view/';
         }
