@@ -88,6 +88,9 @@ abstract class AbstractEndpointTest extends AbstractFunctionalTest
         array $responseConstraints,
         ResponseInterface $response
     ): void {
+        if (empty($responseConstraints)) {
+            $responseConstraints[] = self::isSuccess();
+        }
         foreach ($responseConstraints as $msg => $constraint) {
             $this->assertThat(
                 $response,
