@@ -6,11 +6,11 @@ namespace FunctionalTest;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Zend\Diactoros\Stream;
-use Zend\Diactoros\Request;
-use Zend\Diactoros\Response;
-use Zend\Diactoros\ServerRequest;
-use Zend\Diactoros\Uri;
+use Laminas\Diactoros\Stream;
+use Laminas\Diactoros\Request;
+use Laminas\Diactoros\Response;
+use Laminas\Diactoros\ServerRequest;
+use Laminas\Diactoros\Uri;
 use PHPUnit\Framework\Constraint;
 
 /**

@@ -6,8 +6,8 @@ namespace FunctionalTest;
 
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
-use Zend\Expressive\Application;
-use Zend\Expressive\MiddlewareFactory;
+use Mezzio\Application;
+use Mezzio\MiddlewareFactory;
 use Helmich\Psr7Assert\Psr7Assertions;
 
 /**
