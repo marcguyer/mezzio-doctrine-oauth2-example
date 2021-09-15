@@ -13,7 +13,7 @@ class PingHandlerTest extends \AppTest\AbstractTest
 {
     use Psr7Assertions;
 
-    public function testPingResponse()
+    public function testPingResponse(): void
     {
         $pingHandler = new PingHandler();
         $request = new ServerRequest(

@@ -1,6 +1,9 @@
 <?php
-
 declare(strict_types=1);
+
+/**
+ * Setup middleware pipeline:
+ */
 
 use Psr\Container\ContainerInterface;
 use Mezzio\Application;
@@ -15,10 +18,7 @@ use Mezzio\Router\Middleware\MethodNotAllowedMiddleware;
 use Mezzio\Router\Middleware\RouteMiddleware;
 use Laminas\Stratigility\Middleware\ErrorHandler;
 
-/**
- * Setup middleware pipeline:
- */
-return function (Application $app, MiddlewareFactory $factory, ContainerInterface $container) : void {
+return function (Application $app, MiddlewareFactory $factory, ContainerInterface $container): void {
     // The error handler should be the first (most outer) middleware to catch
     // all Exceptions.
     $app->pipe(ErrorHandler::class);

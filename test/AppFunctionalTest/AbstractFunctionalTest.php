@@ -21,6 +21,8 @@ abstract class AbstractFunctionalTest extends TestCase
 
     protected ContainerInterface $container;
 
+    protected Application $app;
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -32,22 +34,26 @@ abstract class AbstractFunctionalTest extends TestCase
 
     protected function initContainer(): void
     {
+        /** @psalm-suppress MixedAssignment */
         $this->container = require __DIR__ . '/../../config/container.php';
     }
 
     protected function initApp(): void
     {
+        /** @psalm-suppress MixedAssignment */
         $this->app = $this->container->get(Application::class);
     }
 
     protected function initPipeline(): void
     {
+        /** @var MiddlewareFactory $factory */
         $factory = $this->container->get(MiddlewareFactory::class);
         (require __DIR__ . '/../../config/pipeline.php')($this->app, $factory, $this->container);
     }
 
     protected function initRoutes(): void
     {
+        /** @var MiddlewareFactory $factory */
         $factory = $this->container->get(MiddlewareFactory::class);
         (require __DIR__ . '/../../config/routes.php')($this->app, $factory, $this->container);
     }
