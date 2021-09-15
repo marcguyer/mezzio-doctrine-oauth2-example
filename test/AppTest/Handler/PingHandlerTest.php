@@ -22,7 +22,6 @@ class PingHandlerTest extends \AppTest\AbstractTest
         );
         $timestamp = \time();
         $response = $pingHandler->handle($request);
-
         self::assertThat($response, self::isSuccess());
         self::assertThat($response, self::bodyMatchesJson([
             'ack' => Assert::greaterThanOrEqual($timestamp),

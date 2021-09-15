@@ -18,11 +18,11 @@ class PingTest extends AbstractFunctionalTest
             uri: '/api/ping',
             method: 'GET'
         );
-
+        $timestamp = \time();
         $response = $this->app->handle($request);
         self::assertThat($response, self::isSuccess());
         self::assertThat($response, self::bodyMatchesJson([
-            'ack' => Assert::greaterThanOrEqual(time()),
+            'ack' => Assert::greaterThanOrEqual($timestamp),
         ]));
     }
 }
