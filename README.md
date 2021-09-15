@@ -17,11 +17,13 @@ A `DockerFile` is included in the root of this project that can be used to creat
 #### Create Docker Image
 
 ```sh
-docker build -t php73 .
+docker build -t mezzio-doctrine-oauth2-example .
 ```
 
-#### Run Tests in Docker Container
+#### Run Composer in Docker Container
+
+##### Run tests
 
 ```sh
-docker run --rm --interactive --tty --volume $PWD:/app --user $(id -u):$(id -g) php73 composer test
+docker run --rm --interactive --tty --volume $PWD:/app mezzio-doctrine-oauth2-example composer test
 ```

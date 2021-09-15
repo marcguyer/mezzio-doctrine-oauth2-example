@@ -38,25 +38,27 @@
         "source": "https://github.com/marcguyer/mezzio-doctrine-oauth2-example"
     },
     "require": {
-        "php": "^7.1",
-        "laminas/laminas-component-installer": "^2.1.1",
-        "laminas/laminas-config-aggregator": "^1.0",
-        "laminas/laminas-diactoros": "^1.7.1 || ^2.0",
-        "mezzio/mezzio": "^3.0.1",
-        "mezzio/mezzio-helpers": "^5.0",
-        "laminas/laminas-stdlib": "^3.1",
-        "laminas/laminas-servicemanager": "^3.3",
-        "mezzio/mezzio-fastroute": "^3.0",
-        "laminas/laminas-dependency-plugin": "^1.0"
+        "php": "^8.0",
+        "composer/package-versions-deprecated": "^1.10.99",
+        "laminas/laminas-component-installer": "^2.5.0",
+        "laminas/laminas-config-aggregator": "^1.5.0",
+        "laminas/laminas-diactoros": "^2.6.0",
+        "laminas/laminas-servicemanager": "^3.4",
+        "laminas/laminas-stdlib": "^3.3.1",
+        "laminas/laminas-zendframework-bridge": "^1.2.0",
+        "mezzio/mezzio": "^3.5.0",
+        "mezzio/mezzio-fastroute": "^3.0.3",
+        "mezzio/mezzio-helpers": "^5.6.0",
+        "roave/psr-container-doctrine": "^3.1"
     },
     "require-dev": {
-        "filp/whoops": "^2.1.12",
-        "helmich/phpunit-psr7-assert": "^3.0.0",
-        "phpunit/phpunit": "^7.0.1",
+        "filp/whoops": "^2.7.1",
+        "helmich/phpunit-psr7-assert": "^4.3",
+        "laminas/laminas-development-mode": "^3.3.0",
+        "mezzio/mezzio-tooling": "^1.4.0",
+        "phpunit/phpunit": "^9.5",
         "roave/security-advisories": "dev-master",
-        "squizlabs/php_codesniffer": "^2.9.1",
-        "mezzio/mezzio-tooling": "^1.0",
-        "laminas/laminas-development-mode": "^3.1"
+        "squizlabs/php_codesniffer": "^3.6"
     },
     "autoload": {
         "psr-4": {
@@ -66,7 +68,7 @@
     "autoload-dev": {
         "psr-4": {
             "AppTest\\": "test/AppTest/",
-            "FunctionalTest\\": "test/FunctionalTest/"
+            "AppFunctionalTest\\": "test/AppFunctionalTest/"
         }
     },
     "scripts": {

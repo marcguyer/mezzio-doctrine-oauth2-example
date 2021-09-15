@@ -5,22 +5,27 @@ declare(strict_types=1);
 namespace AppTest\Handler;
 
 use App\Handler\PingHandler;
-use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\ServerRequestInterface;
-use Laminas\Diactoros\Response\JsonResponse;
+use Helmich\Psr7Assert\Psr7Assertions;
+use Laminas\Diactoros\ServerRequest;
+use PHPUnit\Framework\Assert;
 
-class PingHandlerTest extends TestCase
+class PingHandlerTest extends \AppTest\AbstractTest
 {
-    public function testResponse()
+    use Psr7Assertions;
+
+    public function testPingResponse()
     {
         $pingHandler = new PingHandler();
-        $response = $pingHandler->handle(
-            $this->prophesize(ServerRequestInterface::class)->reveal()
+        $request = new ServerRequest(
+            uri: '/api/ping',
+            method: 'GET'
         );
+        $timestamp = \time();
+        $response = $pingHandler->handle($request);
 
-        $json = json_decode((string) $response->getBody());
-
-        $this->assertInstanceOf(JsonResponse::class, $response);
-        $this->assertTrue(isset($json->ack));
+        self::assertThat($response, self::isSuccess());
+        self::assertThat($response, self::bodyMatchesJson([
+            'ack' => Assert::greaterThanOrEqual($timestamp),
+        ]));
     }
 }

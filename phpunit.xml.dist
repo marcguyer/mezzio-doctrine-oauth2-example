@@ -2,16 +2,17 @@
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
          bootstrap="vendor/autoload.php"
+         cacheResultFile="data/cache/.phpunit.result.cache"
          colors="true">
     <testsuites>
-        <testsuite name="App\\Tests">
+        <testsuite name="all">
             <directory>./test</directory>
         </testsuite>
+        <testsuite name="unit">
+            <directory>./test/AppTest</directory>
+        </testsuite>
+        <testsuite name="functional">
+            <directory>./test/AppFunctionalTest</directory>
+        </testsuite>
     </testsuites>
-
-    <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">./src</directory>
-        </whitelist>
-    </filter>
 </phpunit>
