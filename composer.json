@@ -1,93 +1,93 @@
 {
-    "name": "marcguyer/mezzio-doctrine-oauth2-example",
-    "description": "Source code for https://marc.guyer.me/posts/example-application-with-mezzio-doctrine-oauth2",
-    "type": "project",
-    "homepage": "https://marc.guyer.me/posts/example-application-with-mezzio-doctrine-oauth2",
-    "license": "BSD-3-Clause",
-    "keywords": [
-        "skeleton",
-        "middleware",
-        "psr",
-        "psr-7",
-        "psr-11",
-        "psr-15",
-        "zf",
-        "zendframework",
-        "mezzio",
-        "mezzio",
-        "doctrine",
-        "phpunit",
-        "oauth2"
-    ],
-    "config": {
-        "sort-packages": true
-    },
-    "extra": {
-        "zf": {
-            "component-whitelist": [
-                "mezzio/mezzio",
-                "mezzio/mezzio-helpers",
-                "mezzio/mezzio-router",
-                "laminas/laminas-httphandlerrunner",
-                "mezzio/mezzio-fastroute"
-            ]
-        }
-    },
-    "support": {
-        "issues": "https://github.com/marcguyer/mezzio-doctrine-oauth2-example/issues",
-        "source": "https://github.com/marcguyer/mezzio-doctrine-oauth2-example"
-    },
-    "require": {
-        "php": "^8.0",
-        "composer/package-versions-deprecated": "^1.10.99",
-        "laminas/laminas-component-installer": "^2.5.0",
-        "laminas/laminas-config-aggregator": "^1.5.0",
-        "laminas/laminas-diactoros": "^2.6.0",
-        "laminas/laminas-servicemanager": "^3.4",
-        "laminas/laminas-stdlib": "^3.3.1",
-        "laminas/laminas-zendframework-bridge": "^1.2.0",
-        "mezzio/mezzio": "^3.5.0",
-        "mezzio/mezzio-fastroute": "^3.0.3",
-        "mezzio/mezzio-helpers": "^5.6.0",
-        "roave/psr-container-doctrine": "^3.1"
-    },
-    "require-dev": {
-        "filp/whoops": "^2.7.1",
-        "helmich/phpunit-psr7-assert": "^4.3",
-        "laminas/laminas-development-mode": "^3.3.0",
-        "mezzio/mezzio-tooling": "^1.4.0",
-        "phpunit/phpunit": "^9.5",
-        "roave/security-advisories": "dev-master",
-        "squizlabs/php_codesniffer": "^3.6"
-    },
-    "autoload": {
-        "psr-4": {
-            "App\\": "src/App/src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "AppTest\\": "test/AppTest/",
-            "AppFunctionalTest\\": "test/AppFunctionalTest/"
-        }
-    },
-    "scripts": {
-        "post-create-project-cmd": [
-            "@development-enable"
-        ],
-        "development-disable": "laminas-development-mode disable",
-        "development-enable": "laminas-development-mode enable",
-        "development-status": "laminas-development-mode status",
-        "expressive": "expressive --ansi",
-        "check": [
-            "@cs-check",
-            "@test"
-        ],
-        "clear-config-cache": "php bin/clear-config-cache.php",
-        "cs-check": "phpcs",
-        "cs-fix": "phpcbf",
-        "serve": "php -S 0.0.0.0:8080 -t public/",
-        "test": "phpunit --colors=always",
-        "test-coverage": "phpunit --colors=always --coverage-clover clover.xml"
+  "name": "marcguyer/mezzio-doctrine-oauth2-example",
+  "description": "Source code for https://marc.guyer.me/posts/example-application-with-mezzio-doctrine-oauth2",
+  "type": "project",
+  "homepage": "https://marc.guyer.me/posts/example-application-with-mezzio-doctrine-oauth2",
+  "license": "BSD-3-Clause",
+  "keywords": [
+    "skeleton",
+    "middleware",
+    "psr",
+    "psr-7",
+    "psr-11",
+    "psr-15",
+    "zf",
+    "zendframework",
+    "mezzio",
+    "mezzio",
+    "doctrine",
+    "phpunit",
+    "oauth2"
+  ],
+  "config": {
+    "sort-packages": true
+  },
+  "extra": {
+    "zf": {
+      "component-whitelist": [
+        "mezzio/mezzio",
+        "mezzio/mezzio-helpers",
+        "mezzio/mezzio-router",
+        "laminas/laminas-httphandlerrunner",
+        "mezzio/mezzio-fastroute"
+      ]
     }
+  },
+  "support": {
+    "issues": "https://github.com/marcguyer/mezzio-doctrine-oauth2-example/issues",
+    "source": "https://github.com/marcguyer/mezzio-doctrine-oauth2-example"
+  },
+  "require": {
+    "php": "^8.0",
+    "composer/package-versions-deprecated": "^1.10.99",
+    "laminas/laminas-component-installer": "^2.5.0",
+    "laminas/laminas-config-aggregator": "^1.5.0",
+    "laminas/laminas-diactoros": "^2.6.0",
+    "laminas/laminas-servicemanager": "^3.4",
+    "laminas/laminas-stdlib": "^3.3.1",
+    "laminas/laminas-zendframework-bridge": "^1.2.0",
+    "mezzio/mezzio": "^3.5.0",
+    "mezzio/mezzio-fastroute": "^3.0.3",
+    "mezzio/mezzio-helpers": "^5.6.0",
+    "roave/psr-container-doctrine": "^3.1"
+  },
+  "require-dev": {
+    "filp/whoops": "^2.7.1",
+    "helmich/phpunit-psr7-assert": "^4.3",
+    "laminas/laminas-development-mode": "^3.3.0",
+    "mezzio/mezzio-tooling": "^1.4.0",
+    "phpunit/phpunit": "^9.5",
+    "roave/security-advisories": "dev-master",
+    "squizlabs/php_codesniffer": "^3.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/App/src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "AppTest\\": "test/AppTest/",
+      "AppFunctionalTest\\": "test/AppFunctionalTest/"
+    }
+  },
+  "scripts": {
+    "post-create-project-cmd": [
+      "@development-enable"
+    ],
+    "development-disable": "laminas-development-mode disable",
+    "development-enable": "laminas-development-mode enable",
+    "development-status": "laminas-development-mode status",
+    "expressive": "expressive --ansi",
+    "check": [
+      "@cs-check",
+      "@test"
+    ],
+    "clear-config-cache": "php bin/clear-config-cache.php",
+    "cs-check": "phpcs",
+    "cs-fix": "phpcbf",
+    "serve": "php -S 0.0.0.0:8080 -t public/",
+    "test": "phpunit --colors=always",
+    "test-coverage": "phpunit --colors=always --coverage-clover clover.xml"
+  }
 }
