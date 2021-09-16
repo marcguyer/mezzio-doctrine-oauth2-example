@@ -31,6 +31,8 @@ class OAuthScope implements OAuth\ScopeEntityInterface
 
     public function __construct()
     {
+        $this->id = 0;
+        $this->scope = '';
         $this->accessTokens = new ArrayCollection();
         $this->authCodes = new ArrayCollection();
     }

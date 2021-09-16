@@ -29,6 +29,8 @@ class OAuthRefreshToken implements OAuth\RefreshTokenEntityInterface
 
     public function __construct()
     {
+        $this->id = 0;
+        $this->expiresDatetime = new DateTimeImmutable();
     }
 
     public function setId(int $id): self

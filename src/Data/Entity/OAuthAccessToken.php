@@ -7,14 +7,17 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Mapping as ORM;
+use Lcobucci\JWT\Configuration;
+use Lcobucci\JWT\Signer\Key\InMemory;
+use Lcobucci\JWT\Signer\Rsa\Sha256;
+use Lcobucci\JWT\Token;
+use League\OAuth2\Server\CryptKey;
 use League\OAuth2\Server\Entities as OAuth;
 
 #[ORM\Table(name: "oauth_access_tokens")]
-#[ORM\Entity()]
+#[ORM\Entity]
 class OAuthAccessToken implements OAuth\AccessTokenEntityInterface
 {
-    use OAuth\Traits\AccessTokenTrait;
-
     #[ORM\Column(name: "id", type: "integer", options: ["unsigned" => true])]
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy: "IDENTITY")]
@@ -43,9 +46,16 @@ class OAuthAccessToken implements OAuth\AccessTokenEntityInterface
     #[ORM\Column(type: "datetime_immutable")]
     private \DateTimeImmutable $expiresDatetime;
 
+    private ?CryptKey $privateKey = null;
+
+    private ?Configuration $jwtConfiguration = null;
+
     public function __construct()
     {
+        $this->id = 0;
+        $this->expiresDatetime = new \DateTimeImmutable();
         $this->user = null;
+        $this->token = '';
         $this->scopes = new ArrayCollection();
     }
 
@@ -183,5 +193,61 @@ class OAuthAccessToken implements OAuth\AccessTokenEntityInterface
     public function setExpiryDateTime(\DateTimeImmutable $dateTime): self
     {
         return $this->setExpiresDatetime($dateTime);
+    }
+
+    /** Set key used to encrypt token */
+    public function setPrivateKey(CryptKey $privateKey): self
+    {
+        $this->privateKey = $privateKey;
+
+        return $this;
+    }
+
+    /** Initialise the JWT Configuration. */
+    public function initJwtConfiguration(): self
+    {
+        if (null === $this->privateKey) {
+            throw new \RuntimeException('Unable to init JWT without private key');
+        }
+        $this->jwtConfiguration = Configuration::forAsymmetricSigner(
+            new Sha256(),
+            InMemory::plainText(
+                $this->privateKey->getKeyContents(),
+                $this->privateKey->getPassPhrase() ?? ''
+            ),
+            InMemory::plainText('')
+        );
+
+        return $this;
+    }
+
+    /**
+     * Generate a JWT from the access token
+     */
+    private function convertToJWT(): Token
+    {
+        $this->initJwtConfiguration();
+
+        if (null === $this->jwtConfiguration) {
+            throw new \RuntimeException('Unable to convert to JWT without config');
+        }
+
+        return $this->jwtConfiguration->builder()
+            ->permittedFor($this->getClient()->getIdentifier())
+            ->identifiedBy($this->getIdentifier())
+            ->issuedAt(new \DateTimeImmutable())
+            ->canOnlyBeUsedAfter(new \DateTimeImmutable())
+            ->expiresAt($this->getExpiryDateTime())
+            ->relatedTo((string) $this->getUserIdentifier())
+            ->withClaim('scopes', $this->getScopes())
+            ->getToken($this->jwtConfiguration->signer(), $this->jwtConfiguration->signingKey());
+    }
+
+    /**
+     * Generate a string representation from the access token
+     */
+    public function __toString(): string
+    {
+        return $this->convertToJWT()->toString();
     }
 }

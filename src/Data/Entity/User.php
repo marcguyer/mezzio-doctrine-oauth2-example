@@ -31,6 +31,9 @@ class User implements MezzioUserInterface, OAuth2UserInterface
 
     public function __construct()
     {
+        $this->id = 0;
+        $this->email = '';
+        $this->password = '';
     }
 
     public function setId(int $id): self

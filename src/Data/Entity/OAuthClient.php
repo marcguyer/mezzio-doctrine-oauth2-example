@@ -40,6 +40,10 @@ class OAuthClient implements MezzioUserInterface, OAuthClientInterface
 
     public function __construct()
     {
+        $this->id = 0;
+        $this->name = '';
+        $this->secret = null;
+        $this->redirect = '';
     }
 
     public function setId(int $id): self

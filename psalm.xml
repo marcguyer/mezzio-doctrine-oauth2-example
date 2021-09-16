@@ -21,15 +21,9 @@
     <issueHandlers>
         <PropertyNotSetInConstructor>
             <errorLevel type="suppress">
-                <referencedProperty name="Data\Entity\OAuthAccessToken::$privateKey" />
-                <referencedProperty name="Data\Entity\OAuthAccessToken::$jwtConfiguration" />
-                <referencedProperty name="Data\Entity\OAuthAccessToken::$id" />
+                <referencedProperty name="Data\Entity\OAuthAuthCode::$client" />
+                <referencedProperty name="Data\Entity\OAuthRefreshToken::$accessToken" />
                 <referencedProperty name="Data\Entity\OAuthAccessToken::$client" />
-                <referencedProperty name="Data\Entity\OAuthAccessToken::$token " />
-                <referencedProperty name="Data\Entity\OAuthAccessToken::$expiresDatetime" />
-                <referencedProperty name="Data\Entity\OAuthAuthCode::$id" />
-                <referencedProperty name="Data\Entity\OAuthAuthCode::$client " />
-                <referencedProperty name="Data\Entity\OAuthAuthCode::$expiresDatetime" />
             </errorLevel>
         </PropertyNotSetInConstructor>
     </issueHandlers>

@@ -40,6 +40,8 @@ class OAuthAuthCode implements OAuth\AuthCodeEntityInterface
 
     public function __construct()
     {
+        $this->id = 0;
+        $this->expiresDatetime = new DateTimeImmutable();
         $this->scopes = new ArrayCollection();
     }
 
