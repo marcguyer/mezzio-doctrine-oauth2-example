@@ -47,6 +47,7 @@
     "laminas/laminas-stdlib": "^3.3.1",
     "laminas/laminas-zendframework-bridge": "^1.2.0",
     "mezzio/mezzio": "^3.5.0",
+    "mezzio/mezzio-authentication-oauth2": "^2.1",
     "mezzio/mezzio-fastroute": "^3.0.3",
     "mezzio/mezzio-helpers": "^5.6.0",
     "roave/psr-container-doctrine": "^3.1"
@@ -59,11 +60,13 @@
     "phpunit/phpunit": "^9.5",
     "psalm/plugin-phpunit": "^0.16.1",
     "roave/security-advisories": "dev-master",
-    "squizlabs/php_codesniffer": "^3.6"
+    "squizlabs/php_codesniffer": "^3.6",
+    "weirdan/doctrine-psalm-plugin": "^1.1"
   },
   "autoload": {
     "psr-4": {
-      "App\\": "src/App/src/"
+      "App\\": "src/App/",
+      "Data\\": "src/Data/"
     }
   },
   "autoload-dev": {

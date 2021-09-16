@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <psalm
-        errorLevel="1"
+        errorLevel="2"
         cacheDirectory="data/cache/.psalm_cache"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns="https://getpsalm.org/schema/config"
@@ -16,5 +16,21 @@
     </projectFiles>
     <plugins>
         <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>
+        <pluginClass class="Weirdan\DoctrinePsalmPlugin\Plugin"/>
     </plugins>
+    <issueHandlers>
+        <PropertyNotSetInConstructor>
+            <errorLevel type="suppress">
+                <referencedProperty name="Data\Entity\OAuthAccessToken::$privateKey" />
+                <referencedProperty name="Data\Entity\OAuthAccessToken::$jwtConfiguration" />
+                <referencedProperty name="Data\Entity\OAuthAccessToken::$id" />
+                <referencedProperty name="Data\Entity\OAuthAccessToken::$client" />
+                <referencedProperty name="Data\Entity\OAuthAccessToken::$token " />
+                <referencedProperty name="Data\Entity\OAuthAccessToken::$expiresDatetime" />
+                <referencedProperty name="Data\Entity\OAuthAuthCode::$id" />
+                <referencedProperty name="Data\Entity\OAuthAuthCode::$client " />
+                <referencedProperty name="Data\Entity\OAuthAuthCode::$expiresDatetime" />
+            </errorLevel>
+        </PropertyNotSetInConstructor>
+    </issueHandlers>
 </psalm>
