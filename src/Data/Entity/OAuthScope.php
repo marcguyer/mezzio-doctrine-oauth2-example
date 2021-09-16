@@ -84,13 +84,17 @@ class OAuthScope implements OAuth\ScopeEntityInterface
         return $this;
     }
 
+    /** @psalm-suppress MixedInferredReturnType */
     public function getAccessTokens(?Criteria $criteria = null): Collection
     {
         if ($criteria === null) {
             return $this->accessTokens;
         }
 
-        /** @psalm-suppress UndefinedInterfaceMethod */
+        /**
+         * @psalm-suppress UndefinedInterfaceMethod
+         * @psalm-suppress MixedReturnStatement
+         */
         return $this->accessTokens->matching($criteria);
     }
 
@@ -109,16 +113,22 @@ class OAuthScope implements OAuth\ScopeEntityInterface
     {
         $this->authCodes->removeElement($authCode);
 
+        /** @psalm-suppress MixedInferredReturnType */
         return $this;
     }
 
+    /** @psalm-suppress MixedInferredReturnType */
     public function getAuthCodes(?Criteria $criteria = null): Collection
     {
         if ($criteria === null) {
+            /** @psalm-suppress MixedInferredReturnType */
             return $this->authCodes;
         }
 
-        /** @psalm-suppress UndefinedInterfaceMethod */
+        /**
+         * @psalm-suppress UndefinedInterfaceMethod
+         * @psalm-suppress MixedReturnStatement
+         */
         return $this->authCodes->matching($criteria);
     }
 }

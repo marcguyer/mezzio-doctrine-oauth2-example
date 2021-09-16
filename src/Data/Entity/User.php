@@ -116,8 +116,10 @@ class User implements MezzioUserInterface, OAuth2UserInterface
         return $this;
     }
 
+    /** @psalm-suppress MixedReturnTypeCoercion */
     public function getDetails(): array
     {
+        /** @psalm-suppress MixedReturnTypeCoercion */
         return $this->details;
     }
 }

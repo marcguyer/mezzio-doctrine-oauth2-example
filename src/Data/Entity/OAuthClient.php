@@ -92,6 +92,7 @@ class OAuthClient implements MezzioUserInterface, OAuthClientInterface
         return $this;
     }
 
+    /** @psalm-suppress MixedReturnTypeCoercion */
     public function getDetails(): array
     {
         return $this->details;

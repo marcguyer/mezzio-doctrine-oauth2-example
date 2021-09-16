@@ -124,7 +124,8 @@ class OAuthAccessToken implements OAuth\AccessTokenEntityInterface
         return $this->getToken();
     }
 
-    public function setIdentifier(mixed $identifier): self
+    /** @psalm-suppress MixedArgument */
+    public function setIdentifier($identifier): self
     {
         return $this->setToken($identifier);
     }
@@ -163,14 +164,20 @@ class OAuthAccessToken implements OAuth\AccessTokenEntityInterface
         return $this;
     }
 
-    public function getScopes(?Criteria $criteria = null): Collection
+    /** @psalm-suppress MixedInferredReturnType */
+    public function getScopes(?Criteria $criteria = null): array
     {
         if ($criteria === null) {
-            return $this->scopes;
+            /** @psalm-suppress MixedReturnTypeCoercion */
+            return $this->scopes->toArray();
         }
 
-        /** @psalm-suppress UndefinedInterfaceMethod */
-        return $this->scopes->matching($criteria);
+        /**
+         * @psalm-suppress UndefinedInterfaceMethod
+         * @psalm-suppress MixedReturnStatement
+         * @psalm-suppress MixedMethodCall
+         */
+        return $this->scopes->matching($criteria)->toArray();
     }
 
     public function setExpiresDatetime(\DateTimeImmutable $expiresDatetime): self

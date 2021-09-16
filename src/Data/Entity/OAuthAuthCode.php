@@ -76,6 +76,7 @@ class OAuthAuthCode implements OAuth\AuthCodeEntityInterface
 
     public function setIdentifier(mixed $identifier): self
     {
+        /** @psalm-suppress MixedArgument */
         $this->setId($identifier);
 
         return $this;
@@ -132,14 +133,23 @@ class OAuthAuthCode implements OAuth\AuthCodeEntityInterface
         return $this;
     }
 
-    public function getScopes(?Criteria $criteria = null): Collection
+    /**
+     * @psalm-suppress MixedInferredReturnType
+     * @psalm-suppress MixedReturnTypeCoercion
+     */
+    public function getScopes(?Criteria $criteria = null): array
     {
         if ($criteria === null) {
-            return $this->scopes;
+            /** @psalm-suppress MixedReturnStatement */
+            return $this->scopes->toArray();
         }
 
-        /** @psalm-suppress UndefinedInterfaceMethod */
-        return $this->scopes->matching($criteria);
+        /**
+         * @psalm-suppress UndefinedInterfaceMethod
+         * @psalm-suppress MixedReturnStatement
+         * @psalm-suppress MixedMethodCall
+         */
+        return $this->scopes->matching($criteria)->toArray();
     }
 
     public function setExpiresDatetime(DateTimeImmutable $expiresDatetime): self
