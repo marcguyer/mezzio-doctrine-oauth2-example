@@ -53,7 +53,11 @@ class OAuthAccessTokenRepository extends EntityRepository implements OAuth\Repos
      */
     public function revokeAccessToken($tokenId)
     {
+        /** @var ?OAuthAccessToken $accessTokenEntity */
         $accessTokenEntity = $this->findOneBy(['token' => $tokenId]);
+        if (null === $accessTokenEntity) {
+            return;
+        }
         $accessTokenEntity->setIsRevoked(true);
         $this->getEntityManager()->persist($accessTokenEntity);
         $this->getEntityManager()->flush();
@@ -61,6 +65,7 @@ class OAuthAccessTokenRepository extends EntityRepository implements OAuth\Repos
 
     public function isAccessTokenRevoked($tokenId): bool
     {
+        /** @var ?OAuthAccessToken $accessTokenEntity */
         $accessTokenEntity = $this->findOneBy(['token' => $tokenId]);
 
         if (null === $accessTokenEntity) {

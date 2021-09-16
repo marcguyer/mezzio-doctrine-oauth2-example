@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 use League\OAuth2\Server\Entities as OAuth;
 
 #[ORM\Table(name: "oauth_scopes")]
-#[ORM\Entity]
+#[ORM\Entity(repositoryClass: \Data\Repository\OAuthScopeRepository::class)]
 class OAuthScope implements OAuth\ScopeEntityInterface
 {
     use OAuth\Traits\ScopeTrait;

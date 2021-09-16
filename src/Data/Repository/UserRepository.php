@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Data\Repository;
 
+use Data\Entity\User;
 use Doctrine\ORM\EntityRepository;
 use League\OAuth2\Server\Entities\UserEntityInterface;
 use Mezzio\Authentication\UserInterface;
@@ -19,6 +20,8 @@ class UserRepository extends EntityRepository implements MezzioAuthInterface, OA
         $grantType,
         ClientEntityInterface $clientEntity
     ): ?UserEntityInterface {
+
+        /** @var ?User $user */
         $user = $this->findOneBy(['email' => $username]);
 
         if ($user === null) {
@@ -34,6 +37,7 @@ class UserRepository extends EntityRepository implements MezzioAuthInterface, OA
 
     public function authenticate(string $credential, string $password = null): ?UserInterface
     {
+        /** @var ?User $user */
         $user = $this->findOneBy(['email' => $credential]);
 
         if ($user === null) {

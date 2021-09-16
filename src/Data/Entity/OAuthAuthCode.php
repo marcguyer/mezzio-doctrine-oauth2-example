@@ -12,7 +12,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Table(name: "oauth_auth_codes")]
-#[ORM\Entity]
+#[ORM\Entity(repositoryClass: \Data\Repository\OAuthAuthCodeRepository::class)]
 class OAuthAuthCode implements OAuth\AuthCodeEntityInterface
 {
     use OAuth\Traits\AuthCodeTrait;

@@ -33,7 +33,10 @@ class OAuthRefreshTokenRepository extends EntityRepository implements OAuth\Repo
      */
     public function revokeRefreshToken($tokenId): void
     {
-        if (null === $refreshTokenEntity = $this->find($tokenId)) {
+        /** @var ?OAuthRefreshToken $refreshTokenEntity */
+        $refreshTokenEntity = $this->find($tokenId);
+
+        if (null === $refreshTokenEntity) {
             return;
         }
 
@@ -45,7 +48,10 @@ class OAuthRefreshTokenRepository extends EntityRepository implements OAuth\Repo
 
     public function isRefreshTokenRevoked($tokenId): bool
     {
-        if (null === $refreshTokenEntity = $this->find($tokenId)) {
+        /** @var ?OAuthRefreshToken $refreshTokenEntity */
+        $refreshTokenEntity = $this->find($tokenId);
+
+        if (null === $refreshTokenEntity) {
             return true;
         }
 

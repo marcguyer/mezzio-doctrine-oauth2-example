@@ -36,7 +36,11 @@ class OAuthAuthCodeRepository extends ORM\EntityRepository implements OAuth\Repo
      */
     public function revokeAuthCode($codeId)
     {
+        /** @var ?OAuthAuthCode $authCodeEntity */
         $authCodeEntity = $this->find($codeId);
+        if (null === $authCodeEntity) {
+            return;
+        }
         $authCodeEntity->setIsRevoked(true);
         $this->getEntityManager()->persist($authCodeEntity);
         $this->getEntityManager()->flush();
@@ -44,7 +48,9 @@ class OAuthAuthCodeRepository extends ORM\EntityRepository implements OAuth\Repo
 
     public function isAuthCodeRevoked($codeId): bool
     {
-        if (null === $authCodeEntity = $this->find($codeId)) {
+        /** @var ?OAuthAuthCode $authCodeEntity */
+        $authCodeEntity = $this->find($codeId);
+        if (null === $authCodeEntity) {
             return true;
         }
 

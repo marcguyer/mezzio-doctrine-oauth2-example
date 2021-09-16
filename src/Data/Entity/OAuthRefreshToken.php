@@ -9,7 +9,7 @@ use League\OAuth2\Server\Entities as OAuth;
 use DateTimeImmutable;
 
 #[ORM\Table(name: "oauth_refresh_tokens")]
-#[ORM\Entity]
+#[ORM\Entity(repositoryClass: \Data\Repository\OAuthRefreshTokenRepository::class)]
 class OAuthRefreshToken implements OAuth\RefreshTokenEntityInterface
 {
     #[ORM\Column(name: "id", type: "integer", options: ["unsigned" => true])]

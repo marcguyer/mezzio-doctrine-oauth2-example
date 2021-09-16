@@ -8,7 +8,7 @@ use Mezzio\Authentication\UserInterface as MezzioUserInterface;
 use League\OAuth2\Server\Entities\UserEntityInterface as OAuth2UserInterface;
 
 #[ORM\Table(name: "users")]
-#[ORM\Entity]
+#[ORM\Entity(repositoryClass: \Data\Repository\UserRepository::class)]
 class User implements MezzioUserInterface, OAuth2UserInterface
 {
     #[ORM\Column(name: "id", type: "integer", options: ["unsigned" => true])]

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Data\Repository;
 
+use Data\Entity\OAuthClient;
 use Doctrine\ORM\EntityRepository;
 use League\OAuth2\Server as OAuth;
 
@@ -11,6 +12,7 @@ class OAuthClientRepository extends EntityRepository implements OAuth\Repositori
 {
     public function getClientEntity($clientIdentifier): ?OAuth\Entities\ClientEntityInterface
     {
+        /** @var ?OAuthClient */
         return $this->findOneBy(['name' => $clientIdentifier]);
     }
 
@@ -26,13 +28,19 @@ class OAuthClientRepository extends EntityRepository implements OAuth\Repositori
             return false;
         }
 
+        /** @psalm-suppress UndefinedInterfaceMethod */
         if (empty($client->getSecret())) {
             return false;
         }
 
+        /**
+         * @psalm-suppress UndefinedInterfaceMethod
+         * @psalm-suppress MixedArgument
+         */
         return password_verify((string)$clientSecret, $client->getSecret());
     }
 
+    /** @psalm-suppress UnusedParam */
     private function isGranted(OAuth\Entities\ClientEntityInterface $client, string $grantType = null): bool
     {
         return match ($grantType) {

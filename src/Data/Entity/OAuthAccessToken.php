@@ -15,7 +15,7 @@ use League\OAuth2\Server\CryptKey;
 use League\OAuth2\Server\Entities as OAuth;
 
 #[ORM\Table(name: "oauth_access_tokens")]
-#[ORM\Entity]
+#[ORM\Entity(repositoryClass: \Data\Repository\OAuthAccessTokenRepository::class)]
 class OAuthAccessToken implements OAuth\AccessTokenEntityInterface
 {
     #[ORM\Column(name: "id", type: "integer", options: ["unsigned" => true])]
