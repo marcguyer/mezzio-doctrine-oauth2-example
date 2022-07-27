@@ -1678,16 +1678,16 @@
         },
         {
             "name": "laminas/laminas-diactoros",
-            "version": "2.7.0",
+            "version": "2.11.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-diactoros.git",
-                "reference": "8b5792b7c81465efb14780c2d4787f158bd96183"
+                "reference": "25b11d422c2e5dad868f68619888763b30f91e2d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-diactoros/zipball/8b5792b7c81465efb14780c2d4787f158bd96183",
-                "reference": "8b5792b7c81465efb14780c2d4787f158bd96183",
+                "url": "https://api.github.com/repos/laminas/laminas-diactoros/zipball/25b11d422c2e5dad868f68619888763b30f91e2d",
+                "reference": "25b11d422c2e5dad868f68619888763b30f91e2d",
                 "shasum": ""
             },
             "require": {
@@ -1773,7 +1773,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2021-09-15T08:41:12+00:00"
+            "time": "2022-06-28T21:07:29+00:00"
         },
         {
             "name": "laminas/laminas-escaper",
@@ -8439,5 +8439,5 @@
         "php": "^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.3.0"
 }
